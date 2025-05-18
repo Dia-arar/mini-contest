@@ -14,7 +14,7 @@ if (location.pathname.endsWith("index.html") || location.pathname === "/") {
     localStorage.setItem("uid", uid);
     localStorage.setItem("name", name); // تخزين الاسم محليًا
     //____________________________
-    location.href = "mini-contest/quiz.html";
+    location.href = "quiz.html";
     //location.href = "quiz.html";
   });
 }
