@@ -12,6 +12,7 @@ if (location.pathname.endsWith("index.html") || location.pathname === "/") {
     const uid = auth.currentUser.uid;
     await db.collection("players").doc(uid).set({ name, email, created: Date.now() });
     localStorage.setItem("uid", uid);
+    localStorage.setItem("name", name); // تخزين الاسم محليًا
     location.href = "quiz.html";
   });
 }
@@ -28,7 +29,6 @@ const questions = [
     opts: ["صادق", "كاذب"],
     ans: "كاذب"
   },
-  // 👇👇 أضف أو عدّل الأسئلة هنا
   {
     q: "ثلاثة أصدقاء (سارة، ماجد، عمر) جلسوا بالترتيب حول دائرة. سارة ليست بجانب ماجد. من يجلس بينهما؟",
     opts: ["سارة", "عمر", "ماجد", "لا أحد"],
@@ -70,14 +70,6 @@ const questions = [
     ans: "نعم"
   }
 ];
-
-// ==== تعليمات إضافة أسئلة ====
-// • كل عنصر كائن {q, opts, ans}
-// • q  : نص السؤال (سلسلة)
-// • opts: مصفوفة خيارات
-// • ans: إما نص الخيار الصحيح أو القيمة المطابقة له
-// احرص أن يكون questions.length = 10 أو غيّر الرقم في جملة النتيجة.
-
 
 // ===== المسابقة =====
 if (location.pathname.endsWith("quiz.html")) {
@@ -123,9 +115,10 @@ if (location.pathname.endsWith("quiz.html")) {
     resBox.hidden = false;
     const elapsed = Math.floor((Date.now() - startTime) / 1000);
     $("#finalScore").textContent = `درجتك: ${score} / ${questions.length * 10}\nالوقت: ${elapsed} ثانية`;
-    // حفظ النتائج
-    const uid = localStorage.getItem("uid");
-    db.collection("results").add({ uid, score, elapsed, at: Date.now() });
+
+    // حفظ النتائج مع الاسم بدل uid
+    const name = localStorage.getItem("name") || "—";
+    db.collection("results").add({ name, score, elapsed, at: Date.now() });
   }
 
   // init
@@ -140,16 +133,26 @@ if (location.pathname.endsWith("quiz.html")) {
 // ===== لوحة الصدارة =====
 if (location.pathname.endsWith("leaderboard.html")) {
   auth.onAuthStateChanged(() => {
-    db.collection("results").orderBy("score", "desc").orderBy("elapsed").limit(10).get().then(async snap => {
-      const body = $("#leaderBody");
-      let i = 1;
-      for (const doc of snap.docs) {
-        const { uid, score, elapsed } = doc.data();
-        const player = await db.collection("players").doc(uid).get();
-        const name = player.exists ? player.data().name : "—";
-        body.insertAdjacentHTML("beforeend", `<tr class='hover:bg-gray-50'><td class='p-2'>${i}</td><td class='p-2 text-right'>${name}</td><td class='p-2'>${score}</td><td class='p-2'>${elapsed}s</td></tr>`);
-        i++;
-      }
-    });
+    db.collection("results")
+      .orderBy("score", "desc")
+      .orderBy("elapsed")
+      .limit(10)
+      .get()
+      .then(snap => {
+        const body = $("#leaderBody");
+        let i = 1;
+        snap.forEach(doc => {
+          const { name, score, elapsed } = doc.data();
+          body.insertAdjacentHTML("beforeend", `
+            <tr class='hover:bg-gray-50'>
+              <td class='p-2'>${i}</td>
+              <td class='p-2 text-right'>${name}</td>
+              <td class='p-2'>${score}</td>
+              <td class='p-2'>${elapsed}s</td>
+            </tr>
+          `);
+          i++;
+        });
+      });
   });
 }
