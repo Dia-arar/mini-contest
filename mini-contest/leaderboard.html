@@ -1,23 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة الصدارة</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^3/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="firebase-config.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
-  <script defer src="app.js"></script>
-</head>
-<body class="bg-gray-100 flex flex-col items-center py-10 min-h-screen">
-  <h1 class="text-2xl font-bold mb-6">🏆 أعلى 10 درجات</h1>
-  <table class="min-w-[350px] bg-white shadow rounded-2xl overflow-hidden">
-    <thead class="bg-gray-200 text-sm">
-      <tr><th class="p-3">#</th><th class="p-3 text-right">الاسم</th><th class="p-3">الدرجة</th><th class="p-3">زمن ⏱️</th></tr>
-    </thead>
-    <tbody id="leaderBody" class="text-center text-sm"></tbody>
-  </table>
-</body>
-</html>
