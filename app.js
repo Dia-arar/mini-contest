@@ -13,7 +13,9 @@ if (location.pathname.endsWith("index.html") || location.pathname === "/") {
     await db.collection("players").doc(uid).set({ name, email, created: Date.now() });
     localStorage.setItem("uid", uid);
     localStorage.setItem("name", name); // تخزين الاسم محليًا
-    location.href = "quiz.html";
+    //____________________________
+    location.href = "mini-contest/quiz.html";
+    //location.href = "quiz.html";
   });
 }
 
