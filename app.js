@@ -77,7 +77,7 @@ const questions = [
 // • opts: مصفوفة خيارات
 // • ans: إما نص الخيار الصحيح أو القيمة المطابقة له
 // احرص أن يكون questions.length = 10 أو غيّر الرقم في جملة النتيجة.
-];
+
 
 // ===== المسابقة =====
 if (location.pathname.endsWith("quiz.html")) {
