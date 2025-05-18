@@ -1,3 +1,50 @@
-.input { @apply py-2 px-3 rounded-xl border w-full focus:outline-none focus:ring; }
-.btn   { @apply py-2 px-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition; }
-.card  { @apply rounded-2xl shadow-xl; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* مدخلات */
+.input {
+  @apply py-3 px-4 rounded-xl bg-zinc-800 text-white w-full focus:outline-none focus:ring-2 focus:ring-purple-500;
+}
+
+/* أزرار */
+.btn-purple {
+  @apply py-3 px-4 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition font-bold;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* صندوق */
+.card {
+  @apply rounded-2xl shadow-xl bg-zinc-900;
+  backdrop-filter: blur(8px);
+  animation: fade-in 0.8s ease-out;
+}
+
+/* حركات */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 10px #a855f7; }
+  50% { text-shadow: 0 0 20px #a855f7; }
+}
+
+@keyframes score-glow {
+  0% { transform: scale(1); color: #22c55e; }
+  50% { transform: scale(1.1); color: #4ade80; }
+  100% { transform: scale(1); color: #22c55e; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.glow-text {
+  animation: glow 2s infinite ease-in-out;
+}
+
+.animate-score-glow {
+  animation: score-glow 1.2s ease-in-out infinite;
+}
