@@ -48,3 +48,27 @@
 .animate-score-glow {
   animation: score-glow 1.2s ease-in-out infinite;
 }
+/* زر يتوسع عند الضغط */
+.btn-purple:active {
+  transform: scale(0.97);
+}
+
+/* تأثير متحرك للخلفية */
+@keyframes bg-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-animated {
+  background: linear-gradient(270deg, #1e1b4b, #6d28d9, #0f172a);
+  background-size: 600% 600%;
+  animation: bg-pan 15s ease infinite;
+}
+
+/* تصفير الـ padding والـ margin الافتراضي */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
