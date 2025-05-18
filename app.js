@@ -2,7 +2,8 @@
 const $ = (sel) => document.querySelector(sel);
 
 // ===== تسجيل =====
-if (location.pathname.endsWith("index.html") || location.pathname === "/") {
+if (location.pathname.includes("index.html") || location.pathname.endsWith("/")) {
+
   $("#registerForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = $("#username").value.trim();
