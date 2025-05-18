@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -13,14 +12,14 @@
   <script defer src="firebase-config.js"></script>
   <script defer src="app.js"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-800 flex items-center justify-center text-white">
-  <div class="bg-zinc-900 shadow-2xl rounded-2xl p-8 w-[400px] border border-purple-500">
-    <h1 class="text-3xl font-extrabold text-purple-400 text-center mb-4">🔥 دمّك برمجة؟ 🔥</h1>
+<body class="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-800 flex items-center justify-center text-white animate-fade-in">
+  <div class="card w-[400px] p-8 border border-purple-500">
+    <h1 class="text-3xl font-extrabold text-purple-400 text-center mb-4 glow-text">🔥 دمّك برمجة؟ 🔥</h1>
     <p class="text-sm text-center text-gray-300 mb-6">جاوب على 10 تحدّيات منطقية بأسرع وقت وخد التوب!</p>
     <form id="registerForm" class="space-y-4">
-      <input id="username" type="text" placeholder="اسمك الكامل" class="w-full p-3 rounded-xl bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" required />
-      <input id="email" type="email" placeholder="إيميلك الجامعي" class="w-full p-3 rounded-xl bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" required />
-      <button type="submit" class="w-full p-3 rounded-xl bg-purple-600 hover:bg-purple-700 transition font-bold">ابدأ التحدّي</button>
+      <input id="username" type="text" placeholder="اسمك الكامل" class="input" required />
+      <input id="email" type="email" placeholder="إيميلك الجامعي" class="input" required />
+      <button type="submit" class="btn-purple w-full">ابدأ التحدّي</button>
     </form>
   </div>
 </body>
