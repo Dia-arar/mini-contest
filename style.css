@@ -83,6 +83,12 @@
   }
 }
 
+body {
+  @apply min-h-screen flex items-center justify-center text-white;
+  background-color: #18181b; /* ثابت، لا تدرج */
+}
+
+
 .fade-slide-in {
   animation: fade-slide-in 0.8s ease-out both;
 }
