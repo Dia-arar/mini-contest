@@ -1,0 +1,25 @@
+<!-- leaderboard.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة الصدارة</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^3/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+  <script defer src="firebase-config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body class="bg-gradient-to-br from-black via-zinc-900 to-gray-800 min-h-screen flex flex-col items-center py-10 text-white">
+  <h1 class="text-3xl font-extrabold text-purple-400 mb-6">🏆 أعلى 10 نتائج – دمّك برمجة؟</h1>
+  <table class="min-w-[350px] bg-zinc-900 text-sm shadow-xl rounded-2xl overflow-hidden border border-purple-600">
+    <thead class="bg-zinc-800 text-purple-300">
+      <tr><th class="p-3">#</th><th class="p-3 text-right">الاسم</th><th class="p-3">الدرجة</th><th class="p-3">الزمن ⏱️</th></tr>
+    </thead>
+    <tbody id="leaderBody" class="text-center text-gray-200"></tbody>
+  </table>
+</body>
+</html>
