@@ -91,12 +91,13 @@ if (location.pathname.endsWith("quiz.html")) {
     qText.textContent = q;
     ansDiv.innerHTML = "";
     opts.forEach(o => {
-      const btn = document.createElement("button");
-      btn.className = "btn w-full mb-2";
-      btn.textContent = o;
-      btn.onclick = () => selectAnswer(o);
-      ansDiv.appendChild(btn);
-    });
+  const btn = document.createElement("button");
+  btn.className = "bg-[#0f172a] text-[#d1fae5] border border-[#334155] rounded-xl w-full py-3 px-4 mb-3 transition hover:bg-[#1e293b] hover:shadow-lg hover:shadow-green-500/40";
+  btn.textContent = o;
+  btn.onclick = () => selectAnswer(o);
+  ansDiv.appendChild(btn);
+});
+
   }
 
   function selectAnswer(choice) {
