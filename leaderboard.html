@@ -1,24 +1,84 @@
+<!-- leaderboard.html بتصميم يشبه xo -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة الصدارة</title>
+  <title>🏆 لوحة الصدارة</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^3/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #111e12);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      color: #d1fae5;
+    }
+    .glass {
+      background: rgba(17, 25, 40, 0.85);
+      border: 1px solid #22c55e55;
+      box-shadow: 0 0 20px #22c55e33;
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      animation: zoomIn 0.6s ease;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 0.75rem;
+    }
+    thead {
+      background-color: #1e293b;
+      color: #a7f3d0;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+    tr:hover {
+      background-color: #0f172a;
+    }
+    h1 {
+      color: #22c55e;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
   <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
   <script defer src="firebase-config.js"></script>
   <script defer src="app.js"></script>
 </head>
-<body class="bg-zinc-900 flex flex-col items-center justify-center text-white min-h-screen space-y-6">
-<h1 class="text-3xl font-extrabold text-purple-400 glow-text fade-slide-in text-center">🏆 أعلى 10 نتائج – دمّك برمجة؟</h1>
-<table class="w-full max-w-md bg-zinc-900 text-sm shadow-xl rounded-2xl overflow-hidden border border-purple-600 fade-slide-in">
-    <thead class="bg-zinc-800 text-purple-300">
-      <tr><th class="p-3">#</th><th class="p-3 text-right">الاسم</th><th class="p-3">الدرجة</th><th class="p-3">الزمن ⏱️</th></tr>
-    </thead>
-    <tbody id="leaderBody" class="text-center text-gray-200"></tbody>
-  </table>
+<body>
+  <div class="glass">
+    <h1>🏆 أعلى 10 نتائج – دمّك برمجة؟</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>الاسم</th>
+          <th>الدرجة</th>
+          <th>الزمن ⏱️</th>
+        </tr>
+      </thead>
+      <tbody id="leaderBody" class="text-center text-gray-200"></tbody>
+    </table>
+  </div>
 </body>
 </html>
