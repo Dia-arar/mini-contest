@@ -3,29 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>التحدّي</title>
+  <title>💡 التحدّي</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^3/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #111e12);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d1fae5;
+    }
+    .glass {
+      background: rgba(17, 25, 40, 0.85);
+      border: 1px solid #22c55e55;
+      box-shadow: 0 0 20px #22c55e33;
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      animation: zoomIn 0.6s ease;
+    }
+    .btn-option {
+      background-color: #0f172a;
+      color: #d1fae5;
+      border: 1px solid #334155;
+      border-radius: 0.75rem;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.75rem;
+      transition: 0.3s;
+    }
+    .btn-option:hover {
+      border-color: #22c55e;
+      background-color: #1e293b;
+      box-shadow: 0 0 8px #22c55e88;
+    }
+    .btn-green {
+      background-color: #22c55e;
+      color: black;
+      font-weight: bold;
+      border-radius: 0.75rem;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      transition: 0.3s;
+    }
+    .btn-green:hover {
+      background-color: #16a34a;
+      box-shadow: 0 0 10px #22c55e88;
+    }
+    #timer {
+      font-family: monospace;
+      color: #22c55e;
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
   <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
   <script defer src="firebase-config.js"></script>
   <script defer src="app.js"></script>
 </head>
-<body class="bg-zinc-900 flex items-center justify-center text-white">
-<div id="quizBox" hidden class="card w-full max-w-2xl p-8 border border-purple-600 fade-slide-in">
+<body>
+  <div id="quizBox" hidden class="glass">
     <div class="flex justify-between text-sm mb-4 text-gray-300">
       <span id="questionCounter"></span>
-      <span id="timer" class="font-mono animate-pulse text-purple-400"></span>
+      <span id="timer"></span>
     </div>
     <h2 id="question" class="text-lg font-bold mb-6"></h2>
-    <div id="answers" class="space-y-3"></div>
+    <div id="answers"></div>
   </div>
 
-<div id="resultBox" hidden class="card w-full max-w-md p-8 text-center border border-green-500 fade-slide-in">
-    <h2 class="text-2xl font-bold mb-4 text-green-400 glow-text">انتهيت!</h2>
-    <p id="finalScore" class="mb-6 text-lg font-mono animate-score-glow"></p>
-    <a href="leaderboard.html" class="btn-purple inline-block w-full">شوف الترتيب</a>
+  <div id="resultBox" hidden class="glass text-center border border-green-500">
+    <h2 class="text-2xl font-bold mb-4 text-green-400">🎉 خلصت!</h2>
+    <p id="finalScore" class="mb-6 text-lg font-mono"></p>
+    <a href="leaderboard.html" class="btn-green">شوف ترتيبك</a>
   </div>
 </body>
 </html>
