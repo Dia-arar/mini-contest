@@ -85,6 +85,7 @@ if (location.pathname.endsWith("quiz.html")) {
   let interval;
 
   function loadQuestion() {
+    console.log("جاري تحميل السؤال والأزرار");
     if (idx >= questions.length) return finish();
     const { q, opts } = questions[idx];
     counter.textContent = `سؤال ${idx + 1} / ${questions.length}`;
